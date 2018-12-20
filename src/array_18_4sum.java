@@ -6,5 +6,5 @@ Find all unique quadruplets in the array which gives the sum of target.
  */
 
 class array_18_4sum {
-    
+
 }

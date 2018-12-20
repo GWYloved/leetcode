@@ -39,6 +39,10 @@ class array_16_3sum_closest {
         return lastSum;
     }
 
+    /*
+    思路：三数循环，不过时间复杂度比较高，需要做一下优化，前两个数遍历，第三个进行二叉查找
+     */
+
     public static void main(String[] args) {
         System.out.println(threeSumClosest(new int[]{-1,2,1,-4},1));
     }
