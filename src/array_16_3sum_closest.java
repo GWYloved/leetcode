@@ -47,4 +47,40 @@ class array_16_3sum_closest {
         System.out.println(threeSumClosest(new int[]{-1,2,1,-4},1));
     }
 
+    /**
+     * 最佳方案：复杂度在O(nlogn)到O(n^2)之间
+     */
+    public int threeSumClosest1(int[] nums, int target) {
+        Arrays.sort(nums);//排序,O(nlogn)
+        int res = nums[0] + nums[1] + nums[2];//计算开头三个的值
+        for(int i = 0;i<nums.length-2;i++){
+            if(i > 0 && nums[i] == nums[i-1]) continue;//排序完成之后如果有相等的就跳过
+            int min = nums[i] + nums[i+1] + nums[i+2];
+            if(min > target){
+                //由于已经排序过了，所以此时和如果比目标大，那么之后的肯定都会大了。
+                //此时计算是应该返回res还是min
+                if(Math.abs(res-target) < min-target) return res;
+                else return min;
+            }
+            //正常情况，指针项和后两项的和比目标值小，此时需要找接近目标的最大值
+            int max = nums[i] + nums[nums.length-1] + nums[nums.length-2];
+            //指针项和末尾两项的和和目标进行比较，目的是找到和最后两项的和比目标值大的项
+            if(max < target){
+                res = max;
+                continue;
+            }
+            //此时已经确定在指针项和末项之间，有两项与指针项的和是比目标值小，但是最接近的，此时只挪动了一根指针就确定了范围
+            int l = i+1;//左指针从左出发
+            int r = nums.length-1;//右指针从右侧出发
+            //寻找该两项
+            while(l<r){
+                int sum = nums[i] + nums[l] + nums[r];
+                if(Math.abs(sum-target) < Math.abs(res-target)) res = sum;
+                if(sum > target) while(l<r && nums[r--] == nums[r]);//和比目标值大右指针左移
+                else if(sum < target) while(l<r && nums[l++] == nums[l]);//和比目标值小，左指针右移
+                else return target;//找到了相等的，直接返回即可
+            }
+        }
+        return res;//没那么多幺蛾子了，就三项，只能返回该值
+    }
 }
