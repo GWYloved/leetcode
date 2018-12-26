@@ -74,4 +74,56 @@ class array_31_next_permutation {
      * 解题思路：写了我2小时才把这题做掉，整体的思路其实比较简单，就是由尾部往头部索引，找到出现尾部比头部大的项，然后针对该项的前项a，
      * 找到该项后面的比a大的最小的值，然后将它和a对调，然后将a后面的所有数字全部重新排序一下即可
      */
+
+    /*
+    最佳实践
+     */
+    public void nextPermutation1(int[] nums) {
+        //First, find the descending order sub-array from tail to head.
+        //Second, find the pivot(left partner of this descending order sub-array.
+        //Inside of the descending order sub-array, find the element that is larger than pivot but it's the closest one.
+        //Swap the pivot and the element.
+        //Reverse the descending order sub-array to ascending order sub-array.
+        //首先，从后往前找，找到一片区域，这片区域里面都是降序，因此此时指针数就是这片区域左边的一个数
+        //再从这片降序区域中寻找，一个数，这个数是在这片区域比指针数大的最小的数，然后交换这两个数
+        //之后翻转这片区域
+        //和我的做法不同，这种做法更加直接，找到指针数之后直接再次寻找，而我找到指针数之后却选择了排序，其实此时这片区域已经是降序排列的了。
+        //因此仅仅只需要替换之后翻转排序即可，翻转亦不需要排序，而仅仅只需要两根指针一个从头一个从尾来替换
+        if (nums == null || nums.length == 0) {
+            return;
+        }
+
+        int i = nums.length - 2;
+
+        while (i >= 0 && nums[i + 1] <= nums[i]) {
+            //通过一个while寻找到指针
+            i--;
+        }
+
+        int pivot = i;
+
+        if (i >= 0) {
+            int j = nums.length - 1;
+
+            while (j >= i && nums[j] <= nums[pivot]) {
+                j--;
+            }
+            swap(nums, pivot, j);
+        }
+        reverse(nums, pivot + 1, nums.length - 1);
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    private void reverse(int[] nums, int i, int j) {
+        while (i < j) {
+            swap(nums, i, j);
+            i++;
+            j--;
+        }
+    }
 }
