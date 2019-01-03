@@ -26,6 +26,7 @@ class quick_sort {
             while (left < right && a[left] <= pivot){
                 left ++;
             }
+            System.out.println("left = "+left + "// right = "+right);
             if (left < right){
                 a[left] = a[left] + a[right];
                 a[right] = a[left] - a[right];
