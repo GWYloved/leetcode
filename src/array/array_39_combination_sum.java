@@ -31,6 +31,6 @@ A solution set is:
  */
 class array_39_combination_sum {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-
+        return null;
     }
 }
