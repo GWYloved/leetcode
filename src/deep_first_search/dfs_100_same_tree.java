@@ -1,4 +1,7 @@
 package deep_first_search;
+
+import NormalStruct.TreeNode;
+
 /*
 Given two binary trees, write a function to check if they are the same or not.
 
@@ -33,12 +36,6 @@ Input:     1         1
 Output: false
  */
 class dfs_100_same_tree {
-     public class TreeNode {
-          int val;
-          TreeNode left;
-          TreeNode right;
-          TreeNode(int x) { val = x; }
-      }
     public static boolean isSameTree(TreeNode p, TreeNode q) {
         if(p == null && q == null){
             return true;

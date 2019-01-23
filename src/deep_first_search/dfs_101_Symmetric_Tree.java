@@ -17,6 +17,8 @@ But the following [1,2,2,null,3,null,3] is not:
    3    3
  */
 
+import NormalStruct.TreeNode;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -27,16 +29,6 @@ But the following [1,2,2,null,3,null,3] is not:
  * }
  */
 class dfs_101_Symmetric_Tree {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     public boolean isSymmetric(TreeNode root) {
 //        if (root == null){
 //            return true;
