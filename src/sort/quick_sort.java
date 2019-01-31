@@ -2,7 +2,7 @@ package sort;
 
 import java.util.Arrays;
 
-class quick_sort {
+public class quick_sort {
     /**
      * 前后指针快排法
      */

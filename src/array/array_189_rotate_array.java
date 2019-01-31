@@ -67,4 +67,26 @@ class array_189_rotate_array {
         }
 //        System.out.println(Arrays.toString(nums));
     }
+
+    /**
+     * 思路：这一题比较简单，难处在于如何使用O(1)的空间来实现一些快速的翻转操作
+     * 我想了很久没有办法实现，事实上是可以实现的，这种局部翻转的思想值得学习
+     */
+    public void rotate2(int[] nums, int k) {
+        k %= nums.length;
+        reverse(nums, 0, nums.length - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, nums.length - 1);
+    }
+
+    public void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
 }

@@ -21,7 +21,7 @@ Follow up:
 
 Could you optimize your algorithm to use only O(k) extra space?
  */
-class array_119_pascals_triangle {
+class array_119_pascals_triangle_II {
     public static List<Integer> getRow(int rowIndex) {
         List<Integer> result = new ArrayList<>();
         if (rowIndex == 0){
