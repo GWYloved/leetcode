@@ -48,8 +48,7 @@ class array_189_rotate_array {
     }
 
     public static void main(String[] args) {
-        int[] a = new int[]{1,2,3,4,5,6,7};
-        rotate1(a, 3);
+        System.out.println(System.currentTimeMillis());
     }
 
     public static void rotate1(int[] nums, int k){
