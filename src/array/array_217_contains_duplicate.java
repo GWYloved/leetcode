@@ -25,7 +25,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class array_217_contains_duplicate {
-    public boolean containsDuplicate(int[] nums) {
+    public static boolean containsDuplicate(int[] nums) {
         if (nums.length < 2){
             return false;
         }
