@@ -21,6 +21,8 @@ Output: true
  */
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class array_217_contains_duplicate {
     public boolean containsDuplicate(int[] nums) {
@@ -40,5 +42,20 @@ public class array_217_contains_duplicate {
     }
     /**
      * 思路：这题真的是就为了让排个序吗？
+     * 很明显不是，可以使用hash表来做处理,但是说实话效率还不如直接sort一下，但是如果应用场景在于对数据的去重的话，那么用hash表的话反而一举两得
      */
+
+    public boolean containsDuplicate1(int[] nums){
+        if (nums.length < 2){
+            return false;
+        }
+        Set<Integer> set = new HashSet<>();
+        for (int i : nums){
+            if (set.contains(i)){
+                return true;
+            }
+            set.add(i);
+        }
+        return false;
+    }
 }
