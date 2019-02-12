@@ -1,72 +1,56 @@
 package array;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
+
+/*
+Given a non-empty array of integers, return the third maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n).
+
+Example 1:
+Input: [3, 2, 1]
+
+Output: 1
+
+Explanation: The third maximum is 1.
+Example 2:
+Input: [1, 2]
+
+Output: 2
+
+Explanation: The third maximum does not exist, so the maximum (2) is returned instead.
+Example 3:
+Input: [2, 2, 3, 1]
+
+Output: 1
+
+Explanation: Note that the third maximum here means the third maximum distinct number.
+Both numbers with value 2 are both considered as second maximum.
+ */
 public class array_414_third_maximum_number {
     public int thirdMax(int[] nums) {
-
+        Integer max1 = null;
+        Integer max2 = null;
+        Integer max3 = null;
+        for (Integer i : nums){
+            if(i.equals(max1) || i.equals(max2) || i.equals(max3)){
+                continue;
+            }
+            if (max1 == null || i > max1){
+                max3 = max2;
+                max2 = max1;
+                max1 = i;
+            }else if (max2 == null || i > max2){
+                max3 = max2;
+                max2 = i;
+            }else if (max3 == null || i > max3){
+                max3 = i;
+            }
+        }
+        return max3 == null? max1 : max3;
     }
 
-    private class NumberContainer{
-        int firstBig = Integer.MIN_VALUE,secondBig = Integer.MIN_VALUE,thirdBig = Integer.MIN_VALUE;
-        public void insert(int number){
-            if (firstBig == number || secondBig == number || thirdBig == number){
-                return;
-            }
-            if (firstBig == Integer.MIN_VALUE){
-                firstBig = number;
-            }
-        }
-
-        private class Wrapper{
-            int flag;
-            int temp;
-            public static final int NOTHING = 0;
-            public static final int BIGGER = 1;
-            public static final int LITTER = 2;
-            public static final int JUST_REPLACE = 3;
-            public Wrapper(int flag) {
-                this.flag = flag;
-            }
-
-            public Wrapper(int flag, int temp) {
-                this.flag = flag;
-                this.temp = temp;
-            }
-
-            public int getTemp() {
-                return temp;
-            }
-        }
-
-        private Wrapper insertFirst(int number){
-            if (firstBig == number){
-                return new Wrapper(Wrapper.NOTHING);
-            }
-            if (firstBig < number){
-                Wrapper wrapper = new Wrapper(Wrapper.LITTER, firstBig);
-                firstBig = number;
-                return wrapper;
-            }
-            if (firstBig > number){
-                Wrapper wrapper = new Wrapper(Wrapper.BIGGER, firstBig);
-                firstBig = number;
-                return wrapper;
-            }
-            if (firstBig == Integer.MIN_VALUE){
-                Wrapper wrapper = new Wrapper(Wrapper.JUST_REPLACE);
-                return wrapper;
-
-            }
-        }
-
-        private Integer insertSecond(int number){
-
-        }
-
-        private Integer insertThird(int number){
-
-        }
-    }
+    /**
+     * 思路：这题原本想的是去重之后排序，然后可以直接获得对应的值，但是去重和排序的代价都太高了
+     * 后来看到别人使用三个数做标记，试了试还是可以的。逻辑也并不复杂
+     */
 }
