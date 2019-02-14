@@ -15,27 +15,6 @@ n is a positive integer, which is in the range of [1, 10000].
 All the integers in the array will be in the range of [-10000, 10000].
  */
 class array_561_array_partition_I {
-    /**
-     * 思路：没啥特别的，复杂度在排序这儿nlogn
-     * 不过竟然有最佳实践
-     */
-    public static int arrayPairSum2(int[] nums) {
-        int[] arr = new int[20001];
-        int lim = 10000;
-        for (int num : nums)
-            arr[num + lim]++;
-        int d = 0, sum = 0;
-        for (int i = -10000; i <= 10000; i++) {
-            if (arr[i + lim] == 0) continue;
-            sum += (arr[i + lim] + 1 - d) / 2 * i;
-            d = (arr[i + lim] - d) % 2;
-        }
-        return sum;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(arrayPairSum2(new int[]{1, 4, 3, 2}));
-    }
 
     public int arrayPairSum(int[] nums) {
         int n = nums.length / 2;
@@ -47,4 +26,36 @@ class array_561_array_partition_I {
         return count;
     }
 
+    public static void main(String[] args) {
+        System.out.println(arrayPairSum2(new int[]{1,4,3,2}));
+    }
+
+
+    /**
+     * 思路：没啥特别的，复杂度在排序这儿nlogn
+     * 不过竟然有最佳实践
+     * 这个最佳实践基本上就是取巧，空间换时间
+     * 最佳时间思路：因为给定了数字从[-10000,10000]，所以给一个20001位的标记空间
+     * 标记空间标记了某个数加上100000那位是否存在，这样所有数的存在都已经在空间里面标记出来了这样做了一个去重并排序的操作
+     * 这之后每隔2位加一下就出结果了
+     * 这个通过声明一段空间，然后将这段空间作为一个计数的功能，称为counting-sort,这个操作不单排序，还去重了，不过这么大的空间浪费率，在空间需要的情况下，最好还是不要使用
+     */
+    public static int arrayPairSum2(int[] nums) {
+        int N = 10000, min = Integer.MAX_VALUE;
+        boolean[] exist = new boolean[2*N+1];
+
+        for (int i = 0; i < nums.length; i++) {
+            exist[nums[i] + N] = true;
+            min = Math.min(min, nums[i] + N);
+        }
+        System.out.println(min);
+        int sum = 0;
+        boolean odd = true;
+        for (int i = min; i < exist.length; i++) {
+            if (!exist[i]) continue;
+            if (odd) sum += i - N;
+            odd = !odd;
+        }
+        return sum;
+    }
 }
