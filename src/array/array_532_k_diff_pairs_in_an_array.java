@@ -1,5 +1,6 @@
 package array;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,4 +48,58 @@ public class array_532_k_diff_pairs_in_an_array {
         }
         return count;
     }
+
+    /**
+     * 思路：这题通过使用hashmap来记录比较方便，主要问题在于索引对象的问题，hashmap保障索引速度不会低于nlogn，这点上不需要我们在精细了。
+     * 时间复杂度是n*O(nlogn)+n*O(nlogn) = O(n^2logn)
+     * 不过这题仍有最佳实践
+     */
+    private static int findPairs2(int[] nums, int k) {
+        if (k < 0 || nums.length <= 1) {
+            return 0;
+        }
+
+        Arrays.sort(nums);
+        int count = 0;
+        int left = 0;
+        int right = 1;
+
+        while (right < nums.length) {
+            int firNum = nums[left];
+            int secNum = nums[right];
+            // If less than k, increase the right index
+            if (secNum - firNum < k) {
+                right++;
+            }
+            // If larger than k, increase the left index
+            else if (secNum - firNum > k) {
+                left++;
+            }
+            // If equal, move left and right to next different number
+            else {
+                count++;
+                while (left < nums.length && nums[left] == firNum) {
+                    left++;
+                }
+                while (right < nums.length && nums[right] == secNum) {
+                    right++;
+                }
+
+            }
+            //left and right should not be the same number
+            if (right == left) {
+                right++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * 最佳实践的思路：
+     * 首先，排序
+     * 如果出现B>A, B-A < K的情况，这样在[A,B]中的所有数都不满足条件，需要将B右移扩大区间
+     * 如果出现B>A, B-A > K的情况，这样在[A,B]中可能存在满足当A右移的情况下，B-A == K的情况
+     * 如果出现B>A, B-A == K的情况，这样就代表找到这个数，而需要考虑一下是否出现重复的，这时候需要将AB指针同时后移到不同的数停止
+     * 由于以上涉及到A指针后移，所以需要判断AB指针重合的问题
+     */
 }
