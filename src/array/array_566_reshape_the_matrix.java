@@ -1,5 +1,7 @@
 package array;
 
+import java.util.Arrays;
+
 /*
 n MATLAB, there is a very useful function called 'reshape', which can reshape a matrix into a new one with different size but keep its original data.
 
@@ -36,7 +38,36 @@ The given r and c are all positive.
 
  */
 public class array_566_reshape_the_matrix {
-    public int[][] matrixReshape(int[][] nums, int r, int c) {
-
+    public static int[][] matrixReshape(int[][] nums, int r, int c) {
+        if (nums.length < 1) {
+            return nums;
+        }
+        int oldLine = nums.length;
+        int oldRow = nums[0].length;
+        if (oldLine * oldRow != r * c) {
+            return nums;
+        }
+        int flagLine = 0, flagRow = 0;
+        int[][] result = new int[r][c];
+        for (int[] num : nums) {
+            for (int j = 0; j < oldRow; j++) {
+                result[flagLine][flagRow++] = num[j];
+                if (flagRow >= c) {
+                    flagRow = 0;
+                    flagLine++;
+                }
+            }
+        }
+        return result;
     }
+
+    public static void main(String[] args) {
+        int[][] result = matrixReshape(new int[][]{new int[]{1, 2}, new int[]{3, 4}}, 1, 4);
+        System.out.println(Arrays.toString(result));
+    }
+
+    /**
+     * 思路：这题主要难度在于题目的理解，原本我以为是矩阵变换那种，结果就是一个将原有数组依次填入新的数组而已
+     * 没什么难度，beat100%
+     */
 }
