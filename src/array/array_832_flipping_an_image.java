@@ -39,7 +39,7 @@ class array_832_flipping_an_image {
     }
 
     /**
-     * 思路：java实现数组的翻转貌似必须要拷贝一次
+     * 思路：简单的拷贝，翻转也可以O(1)不拷贝的
      */
     public static void main(String[] args) {
         int[] temp = new int[]{1, 2};
