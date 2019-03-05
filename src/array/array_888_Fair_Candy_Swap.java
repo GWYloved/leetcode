@@ -39,8 +39,31 @@ It is guaranteed that Alice and Bob have different total amounts of candy.
 It is guaranteed there exists an answer.
  */
 
-public class array_888_Fair_Candy_Swap {
-    public int[] fairCandySwap(int[] A, int[] B) {
+import java.util.Arrays;
 
+public class array_888_Fair_Candy_Swap {
+    public static int[] fairCandySwap(int[] A, int[] B) {
+        int sumA = 0;
+        int sumB = 0;
+        for (int i : A){
+            sumA += i;
+        }
+        for (int i : B){
+            sumB += i;
+        }
+        for (int i : A){
+            for (int j : B){
+                if (sumA - i + j == sumB - j + i){
+                    return new int[]{i, j};
+                }
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(fairCandySwap(new int[]{1,2},new int[]{2,3})));
+        System.out.println(Arrays.toString(fairCandySwap(new int[]{2},new int[]{1,3})));
+        System.out.println(Arrays.toString(fairCandySwap(new int[]{1,2,5}, new int[]{2,4})));
     }
 }
