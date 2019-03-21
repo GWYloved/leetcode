@@ -1,4 +1,4 @@
-package array;
+package array.test;
 
 
 import org.junit.jupiter.api.Assertions;
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import array.array_989_add_to_array_form_of_integer;
 import utils.ListUtils;
 
 class array_989_add_to_array_form_of_integerTest {
