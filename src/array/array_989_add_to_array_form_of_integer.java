@@ -79,14 +79,6 @@ public class array_989_add_to_array_form_of_integer {
         return temp;
     }
 
-    public static void main(String[] args) {
-        System.out.println(addToArrayForm(new int[]{1,2,0,0},34));
-        System.out.println(addToArrayForm(new int[]{2,7,4},181));
-        System.out.println(addToArrayForm(new int[]{2,1,5},806));
-        System.out.println(addToArrayForm(new int[]{9,9,9},1));
-        System.out.println(addToArrayForm(new int[]{9,9,9,9,9,9,9,9,9,9},1));
-    }
-
     /**
      * 思路：刚开始认为用大数可以解决问题，后来发现太年轻，之后使用拆解数组的方式进行计算，感觉还是有点问题
      * 之后我决定使用arraylist作为存储接口，拆解了数组放入进行处理。
