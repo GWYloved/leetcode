@@ -18,7 +18,7 @@ Given binary tree [3,9,20,null,null,15,7],
 return its depth = 3.
  */
 
-import NormalStruct.TreeNode;
+import normal_struct.TreeNode;
 
 /**
  * Definition for a binary tree node.

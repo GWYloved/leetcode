@@ -1,6 +1,6 @@
 package deep_first_search;
 
-import NormalStruct.TreeNode;
+import normal_struct.TreeNode;
 
 /*
 Given two binary trees, write a function to check if they are the same or not.

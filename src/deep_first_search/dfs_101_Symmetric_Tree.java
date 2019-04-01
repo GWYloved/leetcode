@@ -17,7 +17,7 @@ But the following [1,2,2,null,3,null,3] is not:
    3    3
  */
 
-import NormalStruct.TreeNode;
+import normal_struct.TreeNode;
 
 /**
  * Definition for a binary tree node.

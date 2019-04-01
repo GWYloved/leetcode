@@ -1,4 +1,4 @@
-package NormalStruct;
+package normal_struct;
 
 public class TreeNode {
     public int val;
