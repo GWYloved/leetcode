@@ -58,6 +58,7 @@ public class array_941_Valid_Mountain_Array {
     }
 
     public static void main(String[] args) {
+
         System.out.println(validMountainArray(new int[]{2,1}));
         System.out.println(validMountainArray(new int[]{3,5,5}));
         System.out.println(validMountainArray(new int[]{0,3,2,1}));
