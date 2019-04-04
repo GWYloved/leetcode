@@ -17,11 +17,11 @@ class dp_53_maximum_subarray {
         int length = nums.length;
         int max = Integer.MIN_VALUE;
         int[][] p = new int[length][length];
-        for (int i = 0;i < length; i ++){
+        for (int i = 0; i < length; i++) {
             int sum = 0;
-            for (int j = i; j >= 0; j --){
+            for (int j = i; j >= 0; j--) {
                 sum += nums[j];
-                if (max < sum){
+                if (max < sum) {
                     max = sum;
                 }
             }
@@ -37,10 +37,10 @@ class dp_53_maximum_subarray {
     最佳实践：基于动态规划的思想，可以实时在之前出现的最大值和目前值的和和目前值之间进行选择，大的会作为新的目前最大值
     动态的决定了当前的最大值，并且
      */
-    public static int maxSubArray1(int[] nums){
+    public static int maxSubArray1(int[] nums) {
         int maxFlag = nums[0];
         int maxNow = nums[0];
-        for (int i = 0;i < nums.length; i ++){
+        for (int i = 0; i < nums.length; i++) {
             maxFlag = Math.max(maxFlag + nums[i], nums[i]);
             maxNow = Math.max(maxNow, maxFlag);
         }

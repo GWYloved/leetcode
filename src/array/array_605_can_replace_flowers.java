@@ -1,4 +1,5 @@
 package array;
+
 /*
 Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.
 
@@ -19,17 +20,17 @@ public class array_605_can_replace_flowers {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
         int flag = 1;
         int total = 0;
-        for (int i = 0; i < flowerbed.length; i ++){
-            if (flowerbed[i] == 0){
-                flag ++;
-            }else {
+        for (int i = 0; i < flowerbed.length; i++) {
+            if (flowerbed[i] == 0) {
+                flag++;
+            } else {
                 flag = 0;
             }
-            if (flag == 3 || flag == 2 && i == flowerbed.length -1){
-                total ++;
+            if (flag == 3 || flag == 2 && i == flowerbed.length - 1) {
+                total++;
                 flag = 1;
             }
-            if (total >= n){
+            if (total >= n) {
                 return true;
             }
         }

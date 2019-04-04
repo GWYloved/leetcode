@@ -27,21 +27,21 @@ All the integers in the given input belong to the range: [-1e7, 1e7].
  */
 public class array_532_k_diff_pairs_in_an_array {
     private static int findPairs(int[] nums, int k) {
-        if (nums.length < 1 || k < 0){
+        if (nums.length < 1 || k < 0) {
             return 0;
         }
         Map<Integer, Integer> map = new HashMap<>();
-        for (int i : nums){
-            map.put(i,map.getOrDefault(i,0)+1);
+        for (int i : nums) {
+            map.put(i, map.getOrDefault(i, 0) + 1);
         }
         int count = 0;
-        for (Map.Entry<Integer, Integer> entry:map.entrySet()){
-            if (k == 0){
-                if (entry.getValue() >= 2){
-                    count ++;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (k == 0) {
+                if (entry.getValue() >= 2) {
+                    count++;
                 }
-            }else {
-                if (map.containsKey(entry.getKey()+k)){
+            } else {
+                if (map.containsKey(entry.getKey() + k)) {
                     count++;
                 }
             }

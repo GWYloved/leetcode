@@ -38,15 +38,15 @@ public class array_985_sum_of_even_numbers_after_queries {
         int height = queries.length;
         int[] temp = new int[A.length];
         int flag = 0;
-        for (int i = 0; i < height; i ++){
+        for (int i = 0; i < height; i++) {
             A[queries[i][1]] += queries[i][0];
             int sum = 0;
-            for (int j : A){
-                if (j % 2 == 0){
+            for (int j : A) {
+                if (j % 2 == 0) {
                     sum += j;
                 }
             }
-            temp[flag ++] = sum;
+            temp[flag++] = sum;
         }
         return temp;
     }
@@ -54,33 +54,33 @@ public class array_985_sum_of_even_numbers_after_queries {
     public static int[] sumEvenAfterQueries(int[] A, int[][] queries) {
         int height = queries.length;
         int[] temp = new int[A.length];
-        int evenSum = 0,flag = 0;
-        for (int i : A){
-            if (i % 2 == 0){
+        int evenSum = 0, flag = 0;
+        for (int i : A) {
+            if (i % 2 == 0) {
                 evenSum += i;
             }
         }
-        for (int i = 0; i < height; i ++){
+        for (int i = 0; i < height; i++) {
             int position = queries[i][1];
             int t = queries[i][0];
-            if (A[position] % 2 == 0){
-                if ((A[position] + t) % 2 == 0){
-                    evenSum +=t;
-                }else {
-                    evenSum -=A[position];
+            if (A[position] % 2 == 0) {
+                if ((A[position] + t) % 2 == 0) {
+                    evenSum += t;
+                } else {
+                    evenSum -= A[position];
                 }
-            }else if ((A[position] + t) % 2 == 0){
+            } else if ((A[position] + t) % 2 == 0) {
                 evenSum += A[position] + t;
             }
-            temp[flag ++] = evenSum;
+            temp[flag++] = evenSum;
             A[position] += t;
         }
         return temp;
     }
 
     public static void main(String[] args) {
-        int[][] t = new int[][]{{1,0},{-3,1},{-4,0},{2,3}};
-        System.out.println(Arrays.toString(sumEvenAfterQueries(new int[]{1,2,3,4}, t)));
+        int[][] t = new int[][]{{1, 0}, {-3, 1}, {-4, 0}, {2, 3}};
+        System.out.println(Arrays.toString(sumEvenAfterQueries(new int[]{1, 2, 3, 4}, t)));
     }
 
     /**

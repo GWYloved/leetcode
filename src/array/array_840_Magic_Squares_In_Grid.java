@@ -35,12 +35,12 @@ public class array_840_Magic_Squares_In_Grid {
     public int numMagicSquaresInside(int[][] grid) {
         int R = grid.length, C = grid[0].length;
         int ans = 0;
-        for (int r = 0; r < R-2; ++r)
-            for (int c = 0; c < C-2; ++c) {
-                if (grid[r+1][c+1] != 5) continue;  // optional skip
-                if (magic(grid[r][c], grid[r][c+1], grid[r][c+2],
-                        grid[r+1][c], grid[r+1][c+1], grid[r+1][c+2],
-                        grid[r+2][c], grid[r+2][c+1], grid[r+2][c+2]))
+        for (int r = 0; r < R - 2; ++r)
+            for (int c = 0; c < C - 2; ++c) {
+                if (grid[r + 1][c + 1] != 5) continue;  // optional skip
+                if (magic(grid[r][c], grid[r][c + 1], grid[r][c + 2],
+                        grid[r + 1][c], grid[r + 1][c + 1], grid[r + 1][c + 2],
+                        grid[r + 2][c], grid[r + 2][c + 1], grid[r + 2][c + 2]))
                     ans++;
             }
 
@@ -49,7 +49,7 @@ public class array_840_Magic_Squares_In_Grid {
 
     public boolean magic(int... vals) {
         int[] count = new int[16];
-        for (int v: vals) count[v]++;
+        for (int v : vals) count[v]++;
         for (int v = 1; v <= 9; ++v)
             if (count[v] != 1)
                 return false;

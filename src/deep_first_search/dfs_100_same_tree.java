@@ -37,13 +37,13 @@ Output: false
  */
 class dfs_100_same_tree {
     public static boolean isSameTree(TreeNode p, TreeNode q) {
-        if(p == null && q == null){
+        if (p == null && q == null) {
             return true;
-        } else if(p == null || q == null){
+        } else if (p == null || q == null) {
             return false;
         }
         boolean isEqual = p.val == q.val;
-        boolean isLeftEqual = isSameTree(p.left,q.left);
+        boolean isLeftEqual = isSameTree(p.left, q.left);
         boolean isRightEqual = isSameTree(p.right, q.right);
         return isEqual && isLeftEqual && isRightEqual;
     }

@@ -1,4 +1,5 @@
 package array;
+
 /*
 Given a matrix A, return the transpose of A.
 
@@ -26,8 +27,8 @@ public class array_867_Transpose_Matrix {
         int height = A.length;
         int width = A[0].length;
         int[][] result = new int[width][height];
-        for (int i = 0 ; i < width ; i ++){
-            for (int j = 0; j < height; j ++){
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
                 result[i][j] = A[j][i];
             }
         }

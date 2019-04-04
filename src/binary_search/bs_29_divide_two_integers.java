@@ -1,4 +1,5 @@
 package binary_search;
+
 /*
 Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator.
 
@@ -27,52 +28,52 @@ class bs_29_divide_two_integers {
         boolean isDsorNeg = false;
         boolean isDiviNeg = false;
         boolean isAll = false;
-        if (Math.abs(divisor) == 1){
-            if (divisor == 1){
+        if (Math.abs(divisor) == 1) {
+            if (divisor == 1) {
                 return dividend;
-            }else {
-                if (dividend == Integer.MIN_VALUE){
+            } else {
+                if (dividend == Integer.MIN_VALUE) {
                     return Integer.MAX_VALUE;
-                }else {
+                } else {
                     return -dividend;
                 }
             }
         }
-        if (dividend < 0 && divisor < 0){
+        if (dividend < 0 && divisor < 0) {
             isAll = true;
-        }else if (divisor < 0){
+        } else if (divisor < 0) {
             isDsorNeg = true;
             divisor = -divisor;
-        }else if (dividend < 0){
+        } else if (dividend < 0) {
             isDiviNeg = true;
-            divisor = - divisor;
+            divisor = -divisor;
         }
 
-        if (dividend < divisor && !isAll){
+        if (dividend < divisor && !isAll) {
             return 0;
-        }else if (dividend > divisor && isAll){
+        } else if (dividend > divisor && isAll) {
             return 0;
         }
 
         int temp = 1, high = dividend;
-        if (!isAll){
-            while (high > divisor){
+        if (!isAll) {
+            while (high > divisor) {
                 high = high >> 1;
-                temp +=temp;
+                temp += temp;
             }
-        }else {
-            while (high < divisor){
+        } else {
+            while (high < divisor) {
                 high = high >> 1;
-                temp +=temp;
+                temp += temp;
             }
         }
-        temp --;
-        return isDsorNeg||isDiviNeg? -temp :temp;
+        temp--;
+        return isDsorNeg || isDiviNeg ? -temp : temp;
     }
 
     public static void main(String[] args) {
         System.out.println(divide(-1
-                ,1));
+                , 1));
     }
     /**
      * 思路：这题没啥大意思，注意一点，int为-2147483648时，需要转换为long

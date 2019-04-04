@@ -4,16 +4,16 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class ObservableStruct {
-    public class ObserverObject implements Observer{
+    public class ObserverObject implements Observer {
         //观察者
         @Override
         public void update(Observable observable, Object o) {
             //do update
-            System.out.println("args = "+o);
+            System.out.println("args = " + o);
         }
     }
 
-    public class SubscriberObject extends Observable{
+    public class SubscriberObject extends Observable {
         //被观察者
         public SubscriberObject() {
             super();

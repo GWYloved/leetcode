@@ -46,34 +46,34 @@ If A.length > 1, then A[0] != 0
 public class array_989_add_to_array_form_of_integer {
     public static List<Integer> addToArrayForm(int[] A, int K) {
         List<Integer> Klist = new LinkedList<>();
-        if (K > 0){
-            while (K > 0){
+        if (K > 0) {
+            while (K > 0) {
                 int t = K % 10;
                 K /= 10;
                 Klist.add(t);
             }
-        }else {
+        } else {
             Klist.add(0);
         }
         LinkedList<Integer> temp = new LinkedList<>();
         int length = Math.max(Klist.size(), A.length);
         int flag = 0;
-        for (int i = 0; i < length; i ++){
+        for (int i = 0; i < length; i++) {
             int tt = 0;
-            if (i >= A.length){
+            if (i >= A.length) {
                 tt = Klist.get(i) + flag;
-            }else if (i >= Klist.size()){
-                tt = A[A.length - 1 - i]+ flag;
-            }else {
+            } else if (i >= Klist.size()) {
+                tt = A[A.length - 1 - i] + flag;
+            } else {
                 tt = Klist.get(i) + A[A.length - 1 - i] + flag;
             }
             flag = 0;
-            if (tt >= 10){
+            if (tt >= 10) {
                 flag = 1;
             }
             temp.addFirst(tt % 10);
         }
-        if (flag == 1){
+        if (flag == 1) {
             temp.addFirst(1);
         }
         return temp;

@@ -1,6 +1,7 @@
 package deep_first_search;
 
 import normal_struct.TreeNode;
+
 /*
 Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
 
@@ -20,20 +21,20 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
  */
 class dfs_108_convert_sorted_array_to_binary_search_tree {
     public TreeNode sortedArrayToBST(int[] nums) {
-        if (nums == null || nums.length < 1){
+        if (nums == null || nums.length < 1) {
             return null;
         }
-        return buildBst(nums, 0, nums.length-1);
+        return buildBst(nums, 0, nums.length - 1);
     }
 
-    public TreeNode buildBst(int[] nums, int low, int high){
-        if (low <= high){
-            int mid = (low + high) /2;
+    public TreeNode buildBst(int[] nums, int low, int high) {
+        if (low <= high) {
+            int mid = (low + high) / 2;
             TreeNode node = new TreeNode(nums[mid]);
-            node.left = buildBst(nums, low, mid -1);
+            node.left = buildBst(nums, low, mid - 1);
             node.right = buildBst(nums, mid + 1, high);
             return node;
-        }else {
+        } else {
             return null;
         }
     }

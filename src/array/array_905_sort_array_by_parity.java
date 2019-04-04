@@ -28,50 +28,50 @@ public class array_905_sort_array_by_parity {
         int[] temp2 = new int[A.length];
         int flag_temp1 = -1;
         int flag_temp2 = -1;
-        for (int i : A){
-            if (i % 2 == 0){
-                temp1[flag_temp1 +1] = i;
-                flag_temp1 ++;
-            }else {
-                temp2[flag_temp2 +1] = i;
-                flag_temp2 ++;
+        for (int i : A) {
+            if (i % 2 == 0) {
+                temp1[flag_temp1 + 1] = i;
+                flag_temp1++;
+            } else {
+                temp2[flag_temp2 + 1] = i;
+                flag_temp2++;
             }
         }
-        for (int i = 0; i <= flag_temp1; i ++){
+        for (int i = 0; i <= flag_temp1; i++) {
             A[i] = temp1[i];
         }
-        for (int i = 0; i <= flag_temp2; i ++){
-            A[i+flag_temp1+1] = temp2[i];
+        for (int i = 0; i <= flag_temp2; i++) {
+            A[i + flag_temp1 + 1] = temp2[i];
         }
         return A;
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(sortArrayByParity(new int[]{3,1,2,4})));
-        System.out.println(Arrays.toString(sortArrayByParity(new int[]{1,3,4,4,6,3})));
+        System.out.println(Arrays.toString(sortArrayByParity(new int[]{3, 1, 2, 4})));
+        System.out.println(Arrays.toString(sortArrayByParity(new int[]{1, 3, 4, 4, 6, 3})));
         System.out.println(Arrays.toString(sortArrayByParity(new int[]{1})));
-        System.out.println(Arrays.toString(sortArrayByParity(new int[]{0,1})));
+        System.out.println(Arrays.toString(sortArrayByParity(new int[]{0, 1})));
     }
 
     public static int[] sortArrayByParity(int[] A) {
-        if (A.length == 1){
+        if (A.length == 1) {
             return A;
         }
         int start = 0;
         int end = A.length - 1;
-        while (start < end && start <A.length - 1 && end > 0){
-            if (A[start] % 2 == 1 && A[end] % 2 == 0){
+        while (start < end && start < A.length - 1 && end > 0) {
+            if (A[start] % 2 == 1 && A[end] % 2 == 0) {
                 int temp = A[start];
                 A[start] = A[end];
                 A[end] = temp;
-                start ++;
-                end --;
+                start++;
+                end--;
             }
-            if (A[start] % 2 == 0){
-                start ++;
+            if (A[start] % 2 == 0) {
+                start++;
             }
-            if (A[end] % 2 == 1){
-                end --;
+            if (A[end] % 2 == 1) {
+                end--;
             }
         }
         return A;

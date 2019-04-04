@@ -20,43 +20,43 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
  */
 class array_31_next_permutation {
     public static void nextPermutation(int[] nums) {
-        if (nums.length <= 0){
+        if (nums.length <= 0) {
             return;
         }
         //首先判断是否是最大的顺序,判断顺序采用逆序的方式来进行判断，相当于从个位往高位进行索引，切记不能从高位往个位索引
         int temp_lower = nums[nums.length - 1];
-        for (int i = nums.length - 2; i >=0; i --){
-            if (temp_lower <= nums[i]){
+        for (int i = nums.length - 2; i >= 0; i--) {
+            if (temp_lower <= nums[i]) {
                 //低位小于高位，是正常现象
                 temp_lower = nums[i];
-            }else {
+            } else {
                 //出现低位大于高位
-                if (i == nums.length -2){
+                if (i == nums.length - 2) {
                     //1.此时没有比低位更低的低位，则直接翻转高位和低位即可
-                    nums[nums.length -1] = nums[nums.length-2];
-                    nums[nums.length -2] = temp_lower;
+                    nums[nums.length - 1] = nums[nums.length - 2];
+                    nums[nums.length - 2] = temp_lower;
                     return;
-                }else {
+                } else {
                     //2.此时低位并非是最低位，则需要比较低位的更低位和高位的关系
-                    int index = i+2;
-                    Arrays.sort(nums,index,nums.length);
-                    while (index <nums.length){
-                        if (nums[index] > nums[i]){
+                    int index = i + 2;
+                    Arrays.sort(nums, index, nums.length);
+                    while (index < nums.length) {
+                        if (nums[index] > nums[i]) {
                             int temp = nums[index];
                             nums[index] = nums[i];
                             nums[i] = temp;
                             //此时已翻转完毕，但是需要将num[index]的低位数字进行重排序
-                            Arrays.sort(nums,i+1,nums.length);
+                            Arrays.sort(nums, i + 1, nums.length);
                             return;
-                        }else {
+                        } else {
                             index++;
                         }
                     }
                     //3.此时高位已全部大于低位，此时需要将该值与高位互换，之后重排高位的末位值
                     int temp = nums[i];
-                    nums[i] = nums[i+1];
-                    nums[i+1] = temp;
-                    Arrays.sort(nums,i+1, nums.length);
+                    nums[i] = nums[i + 1];
+                    nums[i + 1] = temp;
+                    Arrays.sort(nums, i + 1, nums.length);
                     return;
                 }
             }
@@ -66,7 +66,7 @@ class array_31_next_permutation {
     }
 
     public static void main(String[] args) {
-        int[] a = new int[]{1,3,2};
+        int[] a = new int[]{1, 3, 2};
 //        Arrays.sort(a,1,3);
         nextPermutation(a);
         System.out.println(Arrays.toString(a));

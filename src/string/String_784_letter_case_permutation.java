@@ -3,6 +3,7 @@ package string;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 /*
 Given a string S, we can transform every letter individually to be lowercase or uppercase to create another string.  Return a list of all possible strings we could create.
 
@@ -39,7 +40,7 @@ class String_784_letter_case_permutation {
                 foo(s, i + 1, endIndex, result);
                 break;
             }
-            if ((int) s.charAt(i) >= 65 && (int) s.charAt(i) <= 90){
+            if ((int) s.charAt(i) >= 65 && (int) s.charAt(i) <= 90) {
                 foo(s, i + 1, endIndex, result);
                 char[] temp = s.toCharArray();
                 temp[i] = Character.toLowerCase(temp[i]);
@@ -53,8 +54,8 @@ class String_784_letter_case_permutation {
 
     public static void main(String[] args) {
         System.out.println(letterCasePermutation("C"));
-        System.out.println((int)'A');
-        System.out.println((int)'Z');
+        System.out.println((int) 'A');
+        System.out.println((int) 'Z');
     }
 
     /**

@@ -30,27 +30,27 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 public class array_122_best_time_buy_and_sell_stock_II {
     public static int maxProfit(int[] prices) {
         int total = 0;
-        if (prices.length < 1){
+        if (prices.length < 1) {
             return total;
         }
         int flag = 0;
-        while (flag < prices.length){
+        while (flag < prices.length) {
             int small = prices[flag];
-            while (++flag < prices.length){
-                if (prices[flag] > small){
+            while (++flag < prices.length) {
+                if (prices[flag] > small) {
                     break;
-                }else {
+                } else {
                     small = prices[flag];
                 }
             }
-            if (flag >= prices.length){
+            if (flag >= prices.length) {
                 break;
             }
             int big = prices[flag];
-            while (++flag < prices.length){
-                if (prices[flag] < big){
+            while (++flag < prices.length) {
+                if (prices[flag] < big) {
                     break;
-                }else {
+                } else {
                     big = prices[flag];
                 }
             }
@@ -60,7 +60,7 @@ public class array_122_best_time_buy_and_sell_stock_II {
     }
 
     public static void main(String[] args) {
-        System.out.println(maxProfit(new int[]{7,1,5,3,6,4}));
+        System.out.println(maxProfit(new int[]{7, 1, 5, 3, 6, 4}));
     }
 
     /**

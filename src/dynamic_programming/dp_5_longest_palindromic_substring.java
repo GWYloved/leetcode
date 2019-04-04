@@ -23,35 +23,35 @@ Output: "bb"
 class dp_5_longest_palindromic_substring {
     public static String longestPalindrome(String s) {
         String REG = "*";
-        if (s.length() < 1){
+        if (s.length() < 1) {
             return "";
         }
         String temp = "";
         String[] schar = s.split("");
         List<String> tempList = new ArrayList<>();
-        int index= 0;
+        int index = 0;
         int originsize = schar.length;
-        while (index < originsize){
+        while (index < originsize) {
             tempList.add(REG);
             tempList.add(schar[index]);
             index++;
         }
         tempList.add(REG);
-        for (int i = 1; i < tempList.size(); i +=2){
-            if (temp.length()/2 > tempList.size() - i){
+        for (int i = 1; i < tempList.size(); i += 2) {
+            if (temp.length() / 2 > tempList.size() - i) {
                 break;
             }
             int t = i;
             while (
                     --t >= 0
-                    && 2*i-t < tempList.size()
-                    && tempList.get(t).equals(tempList.get(2*i-t)));//此时指针挪到了最小的地方-1的地方
+                            && 2 * i - t < tempList.size()
+                            && tempList.get(t).equals(tempList.get(2 * i - t))) ;//此时指针挪到了最小的地方-1的地方
             t++;
-            if (2*i - 2*t+1 > temp.length()){
-                temp = String.join("",tempList.subList(t,2*i-t+1));
+            if (2 * i - 2 * t + 1 > temp.length()) {
+                temp = String.join("", tempList.subList(t, 2 * i - t + 1));
             }
         }
-        return temp.replace(REG,"");
+        return temp.replace(REG, "");
     }
 
     public static void main(String[] args) {
@@ -69,33 +69,33 @@ class dp_5_longest_palindromic_substring {
     /**
      * 动态规划解这条题目，也就是需要将这个问题拆分成小问题
      * fun(i,j){
-     *     if(i == j){
-     *         //此时代表两根指针重合
-     *         return true;
-     *     }
-     *     if(i - j == 1){
-     *         //此时代表两根指针只差一位，在回文串的领域里面，就需要直接判断这两个是否相等即可
-     *         return a[i] == a[j];
-     *     }
-     *     if(i - j > 1){
-     *         //此时代表两根指针差不止一位，那就需要不断往内部遍历，直到最后在差一位的时候或者
-     *          return a[i] == a[j] && fun(j+1, i-1);
-     *     }
+     * if(i == j){
+     * //此时代表两根指针重合
+     * return true;
+     * }
+     * if(i - j == 1){
+     * //此时代表两根指针只差一位，在回文串的领域里面，就需要直接判断这两个是否相等即可
+     * return a[i] == a[j];
+     * }
+     * if(i - j > 1){
+     * //此时代表两根指针差不止一位，那就需要不断往内部遍历，直到最后在差一位的时候或者
+     * return a[i] == a[j] && fun(j+1, i-1);
+     * }
      * }
      * 当fun返回true的时候，就代表这段是回文串了。但是有个问题，就是这个fun的记录方式，伪代码是这么写，但是记录方式不可以这样操作
      * 需要用一个二维数组记录每个i，j对应的是否是回文串，这样在后续递归的时候才能直接获取之前的记录。
      * 和一般的由上而下的递归相比，动态规划的递归方式，更像是由下而上
      * 复杂度为O(n^2)
      */
-    public static String longestPalindrome1(String s){
+    public static String longestPalindrome1(String s) {
         int length = s.length();
         String result = "";
         boolean[][] dp = new boolean[length][length];
-        for (int i = 0 ; i < length; i ++){
-            for (int j =0; j <= i ; j++){
-                dp[i][j] = s.charAt(i) == s.charAt(j) && (i-j < 2||dp[i-1][j+1]);
-                if (dp[i][j] && i-j+1 > result.length()){
-                    result = s.substring(j,i+1);
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j <= i; j++) {
+                dp[i][j] = s.charAt(i) == s.charAt(j) && (i - j < 2 || dp[i - 1][j + 1]);
+                if (dp[i][j] && i - j + 1 > result.length()) {
+                    result = s.substring(j, i + 1);
                 }
             }
         }

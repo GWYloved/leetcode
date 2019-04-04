@@ -44,13 +44,13 @@ class array_27_remove_element {
     public static int removeElement(int[] nums, int val) {
         int length = nums.length;
         int i = 0;
-        while (i < length){
-            if (nums[i] == val){
-                length --;
-                for(int j = i; j < length; j++){
-                    nums[j] = nums[j+1];
+        while (i < length) {
+            if (nums[i] == val) {
+                length--;
+                for (int j = i; j < length; j++) {
+                    nums[j] = nums[j + 1];
                 }
-            }else {
+            } else {
                 i++;
             }
         }
@@ -58,7 +58,7 @@ class array_27_remove_element {
     }
 
     public static void main(String[] args) {
-        System.out.println(removeElement(new int[]{0,1,2,2,3,0,4,2},2));
+        System.out.println(removeElement(new int[]{0, 1, 2, 2, 3, 0, 4, 2}, 2));
     }
     /**
      * 解题思路：数据删除某个指定的之后，此时指针不应该再次移动，而应该对删除的这个数据做再次判断。判断成功之后在移动

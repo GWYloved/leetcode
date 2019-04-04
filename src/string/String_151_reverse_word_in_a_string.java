@@ -19,38 +19,38 @@ Follow up: For C programmers, try to solve it in-place in O(1) space.
  */
 class String_151_reverse_word_in_a_string {
     public static String reverseWords(String s) {
-        if (s == null || s.length() < 1){
+        if (s == null || s.length() < 1) {
             return s;
         }
         StringBuilder temp = new StringBuilder();
-        int p1 = s.length() -1;
-        while (p1 >= 0){
+        int p1 = s.length() - 1;
+        while (p1 >= 0) {
             StringBuilder stringBuilder = new StringBuilder();
-            while (p1 >= 0 && ' '!=s.charAt(p1)){
+            while (p1 >= 0 && ' ' != s.charAt(p1)) {
                 stringBuilder.append(s.charAt(p1));
                 p1--;
                 System.out.println(p1);
             }
             temp.append(reverseString(stringBuilder.toString()));
-            if (p1 >= 0){
+            if (p1 >= 0) {
                 temp.append(" ");
             }
-            p1 --;
+            p1--;
         }
         return temp.toString();
     }
 
     public static String reverseString(String s) {
-        if (s == null || s.length() < 1){
+        if (s == null || s.length() < 1) {
             return s;
         }
         char[] temp = new char[s.length()];
-        int start = 0, end = s.length() -1;
-        while (start <= end){
+        int start = 0, end = s.length() - 1;
+        while (start <= end) {
             temp[start] = s.charAt(end);
             temp[end] = s.charAt(start);
-            start ++;
-            end --;
+            start++;
+            end--;
         }
         return String.valueOf(temp);
     }

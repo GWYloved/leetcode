@@ -33,22 +33,22 @@ Each element nums[i] will be an integer in the range [-1000, 1000].
  */
 class array_724_find_pivot_index {
     public int pivotIndex(int[] nums) {
-        if (nums.length < 1){
+        if (nums.length < 1) {
             return -1;
         }
         int totalSum = 0;
-        for (int i : nums){
+        for (int i : nums) {
             totalSum += i;
         }
-        if (totalSum == nums[0]){
+        if (totalSum == nums[0]) {
             return 0;
         }
         int flagSum = 0;
-        for (int i = 0; i < nums.length -1; i ++){
+        for (int i = 0; i < nums.length - 1; i++) {
             flagSum += nums[i];
             totalSum -= nums[i];
-            if (totalSum - nums[i+1] == flagSum){
-                return i +1;
+            if (totalSum - nums[i + 1] == flagSum) {
+                return i + 1;
             }
         }
         return -1;
