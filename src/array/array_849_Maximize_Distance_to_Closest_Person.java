@@ -1,4 +1,5 @@
 package array;
+
 /*
 In a row of seats, 1 represents a person sitting in that seat, and 0 represents that the seat is empty.
 
@@ -51,13 +52,13 @@ public class array_849_Maximize_Distance_to_Closest_Person {
     }
 
     public static void main(String[] args) {
-        System.out.println(maxDistToClosest(new int[]{1,0,1}));
-        System.out.println(maxDistToClosest(new int[]{1,0}));
-        System.out.println(maxDistToClosest(new int[]{0,1}));
-        System.out.println(maxDistToClosest(new int[]{1,0,0,1}));
-        System.out.println(maxDistToClosest(new int[]{1,0,0,0,1,0,1}));
-        System.out.println(maxDistToClosest(new int[]{0,0,0,1,1,0,0,0,1}));
-        System.out.println(maxDistToClosest(new int[]{1,0,0,1,0,0}));
-        System.out.println(maxDistToClosest(new int[]{1,0,0,0,1,0,0,0,1}));
+        System.out.println(maxDistToClosest(new int[]{1, 0, 1}));
+        System.out.println(maxDistToClosest(new int[]{1, 0}));
+        System.out.println(maxDistToClosest(new int[]{0, 1}));
+        System.out.println(maxDistToClosest(new int[]{1, 0, 0, 1}));
+        System.out.println(maxDistToClosest(new int[]{1, 0, 0, 0, 1, 0, 1}));
+        System.out.println(maxDistToClosest(new int[]{0, 0, 0, 1, 1, 0, 0, 0, 1}));
+        System.out.println(maxDistToClosest(new int[]{1, 0, 0, 1, 0, 0}));
+        System.out.println(maxDistToClosest(new int[]{1, 0, 0, 0, 1, 0, 0, 0, 1}));
     }
 }

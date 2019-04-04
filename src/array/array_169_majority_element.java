@@ -20,29 +20,31 @@ Output: 2
  */
 class array_169_majority_element {
     public static int majorityElement(int[] nums) {
-        if (nums.length <= 1){
+        if (nums.length <= 1) {
             return nums[0];
         }
         Arrays.sort(nums);
-        int former,last;
-        if (nums[0] == nums[1]){
-            former = 1; last = 1;
-        }else {
-            former = 1; last = 0;
+        int former, last;
+        if (nums[0] == nums[1]) {
+            former = 1;
+            last = 1;
+        } else {
+            former = 1;
+            last = 0;
         }
         int flag = nums[0];
         int big = nums[0];
-        for (int i = 1; i < nums.length; i ++){
-            if (flag == nums[i]){
+        for (int i = 1; i < nums.length; i++) {
+            if (flag == nums[i]) {
                 last++;
-                if (last > former){
+                if (last > former) {
                     big = nums[i];
                     former = last;
                 }
-                if (last > nums.length /2){
+                if (last > nums.length / 2) {
                     return big;
                 }
-            }else {
+            } else {
                 flag = nums[i];
                 last = 1;
             }
@@ -51,7 +53,7 @@ class array_169_majority_element {
     }
 
     public static void main(String[] args) {
-        System.out.println(majorityElement(new int[]{6,5,5}));
+        System.out.println(majorityElement(new int[]{6, 5, 5}));
     }
 
     /**
@@ -67,14 +69,14 @@ class array_169_majority_element {
     public static int majorityElement1(int[] nums) {
         int flag = 0;
         int can = nums[0];
-        for (int i : nums){
-            if (flag == 0){
+        for (int i : nums) {
+            if (flag == 0) {
                 can = i;
             }
-            if (can == i){
-                flag ++;
-            }else {
-                flag --;
+            if (can == i) {
+                flag++;
+            } else {
+                flag--;
             }
         }
         return can;

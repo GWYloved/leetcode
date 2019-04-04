@@ -15,12 +15,12 @@ Minimize the total number of operations.
 public class array_283_move_zeros {
     public void moveZeroes(int[] nums) {
         int flag = 0;
-        for (int i = 0; i < nums.length; i ++){
-            if (nums[i] != 0){
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
                 nums[flag++] = nums[i];
             }
         }
-        for (int i = flag; i < nums.length; i ++){
+        for (int i = flag; i < nums.length; i++) {
             nums[i] = 0;
         }
     }

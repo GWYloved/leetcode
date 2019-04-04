@@ -22,15 +22,15 @@ public class array_448_find_all_numbers_disappeared_in_an_array {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         boolean[] flag = new boolean[nums.length];
         List<Integer> contaienr = new ArrayList<>();
-        for (int i = 0; i < flag.length; i ++){
+        for (int i = 0; i < flag.length; i++) {
             flag[i] = true;
         }
-        for (int i : nums){
+        for (int i : nums) {
             flag[i] = false;
         }
-        for (int i = 0; i < flag.length; i ++){
-            if (flag[i]){
-                contaienr.add(i+1);
+        for (int i = 0; i < flag.length; i++) {
+            if (flag[i]) {
+                contaienr.add(i + 1);
             }
         }
         return contaienr;

@@ -140,27 +140,25 @@ public class array_121_best_time_to_buy_and_sell_stock {
 
 
     /**
-     *思路：穷举法比较容易想到，不过时间复杂度比较高，而onepass法则比较难想到
+     * 思路：穷举法比较容易想到，不过时间复杂度比较高，而onepass法则比较难想到
      * 思想主要是从头出发，遇到比已经遇到最小的值还小的话，就存储一下，否则就对比一下当前值和最小值的差值，如果这个差值比存储的差值还大的话就取用这个差值
      * 这样能保证差值是之前遇到的最小的值为底的值。而如果出现了最大差值之后，在遇到底就不会右反应了
      */
     public static int maxProfit1(int[] prices) {
-        if (prices.length < 1){
+        if (prices.length < 1) {
             return 0;
         }
         int min = prices[0];
         int diff = 0;
-        for (int i : prices){
-            if (i < min){
+        for (int i : prices) {
+            if (i < min) {
                 min = i;
-            }else if (diff < i - min){
+            } else if (diff < i - min) {
                 diff = i - min;
             }
         }
         return diff;
     }
-
-
 
 
     public static void main(String[] args) {

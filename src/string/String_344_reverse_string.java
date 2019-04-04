@@ -1,4 +1,5 @@
 package string;
+
 /*
 Write a function that takes a string as input and returns the string reversed.
 
@@ -13,16 +14,16 @@ Output: "amanaP :lanac a ,nalp a ,nam A"
  */
 class String_344_reverse_string {
     public String reverseString(String s) {
-        if (s == null || s.length() < 1){
+        if (s == null || s.length() < 1) {
             return s;
         }
         char[] temp = new char[s.length()];
-        int start = 0, end = s.length() -1;
-        while (start <= end){
+        int start = 0, end = s.length() - 1;
+        while (start <= end) {
             temp[start] = s.charAt(end);
             temp[end] = s.charAt(start);
-            start ++;
-            end --;
+            start++;
+            end--;
         }
         return String.valueOf(temp);
     }

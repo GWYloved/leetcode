@@ -39,20 +39,20 @@ import java.util.Arrays;
 
 class array_26_remove_duplicates_from_sorted_array {
     public static int removeDuplicates(int[] nums) {
-        if (nums.length <2){
+        if (nums.length < 2) {
             return nums.length;
         }
         int length = 1;
-        for (int i = 1; i < nums.length; i ++){
-            if (nums[i] != nums[i-1]){
-                nums[length ++] = nums[i];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[length++] = nums[i];
             }
         }
         return length;
     }
 
     public static void main(String[] args) {
-        int[] s = new int[]{0,0,1,1,1,2,2,3,3,4};
+        int[] s = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
         removeDuplicates(s);
     }
 

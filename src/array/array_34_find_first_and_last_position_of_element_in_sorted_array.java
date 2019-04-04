@@ -20,37 +20,39 @@ Output: [-1,-1]
  */
 class array_34_find_first_and_last_position_of_element_in_sorted_array {
     public static int[] searchRange(int[] nums, int target) {
-        if (nums.length < 1){
-            return new int[]{-1,-1};
+        if (nums.length < 1) {
+            return new int[]{-1, -1};
         }
         int low = 0;
         int high = nums.length - 1;
         int start = -1;
         int end = -1;
-        while (low <= high && low < nums.length && high < nums.length){
+        while (low <= high && low < nums.length && high < nums.length) {
             int middle = (low + high) >> 1;
-            if (nums[middle] == target){
+            if (nums[middle] == target) {
                 start = middle;
                 end = middle;
-                while (start -- >= 1 && nums[start] == target);
-                while (end ++ <= nums.length -2 && nums[end] == target);
+                while (start-- >= 1 && nums[start] == target) ;
+                while (end++ <= nums.length - 2 && nums[end] == target) ;
                 return new int[]{++start, --end};
-            }else if (nums[middle] < target){
-                low = middle+1;
-            }else {
-                high = middle -1;
+            } else if (nums[middle] < target) {
+                low = middle + 1;
+            } else {
+                high = middle - 1;
             }
         }
         return new int[]{start, end};
     }
+
     /*
     思路分析：这题要求是O(logn)因此只能用二叉查找来确定值了，但是我在确定值之后需要确定范围，确定范围需要挪动指针，这个挪动的复杂度有点问题，如果在不确定的情况下可能会超出O(logn)变成o(n)
      */
     public static void main(String[] args) {
-        int[] a = new int[]{5,7,7,8,8,10};
+        int[] a = new int[]{5, 7, 7, 8, 8, 10};
         int b = 8;
-        System.out.println(Arrays.toString(searchRange1(a,b)));
+        System.out.println(Arrays.toString(searchRange1(a, b)));
     }
+
     /**
      * 最佳实践：第一次二叉查找并非查找这个数，二是查找到比这个数小的最大的数的指针位置，这样就确定了开始位置，而第二次二叉查找则是在这个数+1的情况下，
      * 查找比+1之后的这个数小的最大的位置，或者说按照第一次查找的反方向，查找比这个数大的数的最小的数的位置，这样就确定了结束的位置。

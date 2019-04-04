@@ -32,12 +32,12 @@ import normal_struct.TreeNode;
 class dfs_104_maximun_depth_of_binary_tree {
     public int maxDepth(TreeNode root) {
         int h1, h2;
-        if (root == null){
+        if (root == null) {
             return 0;
-        }else {
+        } else {
             h1 = maxDepth(root.right);
             h2 = maxDepth(root.left);
-            return (h1 < h2) ? h2+1 : h1+1;
+            return (h1 < h2) ? h2 + 1 : h1 + 1;
         }
     }
     /**
@@ -48,25 +48,25 @@ class dfs_104_maximun_depth_of_binary_tree {
     /**
      * 除此之外还有层级遍历求树的高度方式
      */
-    int maxDepth2(TreeNode root){
+    int maxDepth2(TreeNode root) {
         int front = -1, rear = -1;
-        int last = 0,level = 0;
+        int last = 0, level = 0;
         TreeNode[] queue = new TreeNode[100000];
-        if (root == null){
+        if (root == null) {
             return 0;
         }
         queue[++rear] = root;
         TreeNode p;
-        while (front < rear){
+        while (front < rear) {
             p = queue[++front];
-            if (p.left != null){
+            if (p.left != null) {
                 queue[++rear] = p.left;
             }
-            if (p.right != null){
+            if (p.right != null) {
                 queue[++rear] = p.right;
             }
-            if (front == last){
-                level ++;
+            if (front == last) {
+                level++;
                 last = rear;
             }
         }

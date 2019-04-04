@@ -25,37 +25,38 @@ import java.util.Set;
 
 public class array_219_contain_duplicate_ll {
     public static boolean containsNearbyDuplicate(int[] nums, int k) {
-        if (nums.length< 2){
+        if (nums.length < 2) {
             return false;
         }
-        if (nums.length <= k+1){
+        if (nums.length <= k + 1) {
             return containsDuplicate(nums);
         }
         int start = 0;
         int last = k;
-        while (last < nums.length){
-            int[] temp = new int[k+1];
-            temp = Arrays.copyOfRange(nums, start, last+1);
+        while (last < nums.length) {
+            int[] temp = new int[k + 1];
+            temp = Arrays.copyOfRange(nums, start, last + 1);
 //            System.out.println(Arrays.toString(nums));
 //            System.out.println(Arrays.toString(temp));
-            if (containsDuplicate(temp)){
+            if (containsDuplicate(temp)) {
                 return true;
             }
-            start ++;
-            last ++;
+            start++;
+            last++;
         }
         return false;
     }
+
     public static boolean containsDuplicate(int[] nums) {
-        if (nums.length < 2){
+        if (nums.length < 2) {
             return false;
         }
         Arrays.sort(nums);
         int before = nums[0];
-        for (int i =1; i < nums.length; i++){
-            if (before == nums[i]){
+        for (int i = 1; i < nums.length; i++) {
+            if (before == nums[i]) {
                 return true;
-            }else {
+            } else {
                 before = nums[i];
             }
         }
@@ -63,7 +64,7 @@ public class array_219_contain_duplicate_ll {
     }
 
     public static void main(String[] args) {
-        System.out.println(containsNearbyDuplicate(new int[]{1,2,3,1,2,3},2));
+        System.out.println(containsNearbyDuplicate(new int[]{1, 2, 3, 1, 2, 3}, 2));
     }
 
     /**
@@ -71,13 +72,11 @@ public class array_219_contain_duplicate_ll {
      * 正确的其实很简单，使用hashset即可，不过过于复杂的情况可能还是不是很好用，不过比我的多重操作好点
      * 这样复杂度最差为O(n*nlogn)
      */
-    public boolean containsNearbyDuplicate1(int[] nums, int k){
-        Set<Integer> set=new HashSet<Integer>();
-        for(int i=0;i<nums.length;i++)
-        {
-            if(i>k) set.remove(nums[i-k-1]);
-            if(!set.add(nums[i]))
-            {
+    public boolean containsNearbyDuplicate1(int[] nums, int k) {
+        Set<Integer> set = new HashSet<Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (i > k) set.remove(nums[i - k - 1]);
+            if (!set.add(nums[i])) {
                 return true;
             }
         }

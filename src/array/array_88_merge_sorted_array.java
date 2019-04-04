@@ -19,51 +19,51 @@ Output: [1,2,2,3,5,6]
  */
 public class array_88_merge_sorted_array {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        for (int i = m; i < m+n; i ++){
+        for (int i = m; i < m + n; i++) {
             nums1[i] = nums2[i - m];
         }
-        quickSortByTwoPointer(nums1, 0, m+n-1);
+        quickSortByTwoPointer(nums1, 0, m + n - 1);
     }
 
 
     public void merge1(int[] nums1, int m, int[] nums2, int n) {
-        if(n == 0){
+        if (n == 0) {
             return;
         }
-        int[] temp = Arrays.copyOf(nums1,nums1.length);
+        int[] temp = Arrays.copyOf(nums1, nums1.length);
         int p1 = 0, p2 = 0;
-        for (int i = 0; i < m+n; i ++){
-            if (p2 >= n ||temp[p1] < nums2[p2] || !(temp[p1] == 0&& p1 >= m )){
+        for (int i = 0; i < m + n; i++) {
+            if (p2 >= n || temp[p1] < nums2[p2] || !(temp[p1] == 0 && p1 >= m)) {
                 nums1[i] = temp[p1];
-                p1 ++;
-            }else {
+                p1++;
+            } else {
                 nums1[i] = nums2[p2];
-                p2 ++;
+                p2++;
             }
         }
     }
 
-    public static void quickSortByTwoPointer(int[] a,int startIndex, int endIndex){
-        if (startIndex >= endIndex){
+    public static void quickSortByTwoPointer(int[] a, int startIndex, int endIndex) {
+        if (startIndex >= endIndex) {
             return;
         }
-        int partitionIndex = getPartitionIndexByTwoPointer(a,startIndex,endIndex);
-        quickSortByTwoPointer(a, startIndex, partitionIndex-1);
+        int partitionIndex = getPartitionIndexByTwoPointer(a, startIndex, endIndex);
+        quickSortByTwoPointer(a, startIndex, partitionIndex - 1);
         quickSortByTwoPointer(a, partitionIndex + 1, endIndex);
     }
 
-    private static int getPartitionIndexByTwoPointer(int[] a, int startIndex, int endIndex){
+    private static int getPartitionIndexByTwoPointer(int[] a, int startIndex, int endIndex) {
         int left = startIndex;
         int right = endIndex;
         int pivot = a[startIndex];
-        while (left != right){
-            while (left < right && a[right] > pivot){
-                right --;
+        while (left != right) {
+            while (left < right && a[right] > pivot) {
+                right--;
             }
-            while (left < right && a[left] <= pivot){
-                left ++;
+            while (left < right && a[left] <= pivot) {
+                left++;
             }
-            if (left < right){
+            if (left < right) {
                 a[left] = a[left] + a[right];
                 a[right] = a[left] - a[right];
                 a[left] = a[left] - a[right];

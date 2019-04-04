@@ -1,4 +1,5 @@
 package array;
+
 /*
 An array is monotonic if it is either monotone increasing or monotone decreasing.
 
@@ -40,21 +41,21 @@ public class array_896_monotonic_array {
     public static boolean isMonotonic(int[] A) {
         int t = 0;
         int last = A[0];
-        for (int i = 1; i < A.length; i ++){
-            if (t == 0){
-                if (A[i] > last){
+        for (int i = 1; i < A.length; i++) {
+            if (t == 0) {
+                if (A[i] > last) {
                     t = 1;
-                }else if (A[i] < last){
+                } else if (A[i] < last) {
                     t = -1;
                 }
-            }else if (t == -1){
+            } else if (t == -1) {
                 //decrease
-                if (A[i] > last){
+                if (A[i] > last) {
                     return false;
                 }
-            }else {
+            } else {
                 //increase
-                if (A[i] < last){
+                if (A[i] < last) {
                     return false;
                 }
             }
@@ -64,11 +65,11 @@ public class array_896_monotonic_array {
     }
 
     public static void main(String[] args) {
-        System.out.println(isMonotonic(new int[]{1,2,2,3}));
-        System.out.println(isMonotonic(new int[]{6,5,4,4}));
-        System.out.println(isMonotonic(new int[]{1,3,2}));
-        System.out.println(isMonotonic(new int[]{1,2,4,5}));
-        System.out.println(isMonotonic(new int[]{1,1,1}));
+        System.out.println(isMonotonic(new int[]{1, 2, 2, 3}));
+        System.out.println(isMonotonic(new int[]{6, 5, 4, 4}));
+        System.out.println(isMonotonic(new int[]{1, 3, 2}));
+        System.out.println(isMonotonic(new int[]{1, 2, 4, 5}));
+        System.out.println(isMonotonic(new int[]{1, 1, 1}));
 
     }
 

@@ -26,7 +26,7 @@ A is sorted in non-decreasing order.
 public class array_977_squares_of_a_sorted_array {
     public int[] sortedSquares1(int[] A) {
         int[] temp = new int[A.length];
-        for (int i = 0; i < A.length; i ++){
+        for (int i = 0; i < A.length; i++) {
             temp[i] = A[i] * A[i];
         }
         Arrays.sort(temp);
@@ -35,47 +35,47 @@ public class array_977_squares_of_a_sorted_array {
 
     public static int[] sortedSquares(int[] A) {
         int divider = -1;
-        for (int i = 0; i < A.length; i ++){
-            if (A[i] >= 0){
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] >= 0) {
                 divider = i;
                 break;
             }
         }
         int[] temp = new int[A.length];
-        if (divider < 0){
-            for (int i = 0; i < A.length; i ++){
-                temp[A.length - 1 - i] = A[i]*A[i];
+        if (divider < 0) {
+            for (int i = 0; i < A.length; i++) {
+                temp[A.length - 1 - i] = A[i] * A[i];
             }
-        }else if (divider == 0){
-            for (int i = 0; i < A.length; i ++){
+        } else if (divider == 0) {
+            for (int i = 0; i < A.length; i++) {
                 temp[i] = A[i] * A[i];
             }
-        }else {
+        } else {
             int left = divider - 1, right = divider;
             int flag = 0;
-            while (left >= 0 && right <= A.length - 1){
+            while (left >= 0 && right <= A.length - 1) {
                 int tempLeft = A[left] * A[left];
                 int tempRight = A[right] * A[right];
-                if (tempLeft <= tempRight){
-                    temp[flag ++ ] = tempLeft;
-                    left --;
-                }else {
-                    temp[flag ++] = tempRight;
-                    right ++;
+                if (tempLeft <= tempRight) {
+                    temp[flag++] = tempLeft;
+                    left--;
+                } else {
+                    temp[flag++] = tempRight;
+                    right++;
                 }
             }
-            if (left >= 0){
-                while (left > 0){
-                    temp[flag ++] = A[left] * A[left];
-                    left --;
+            if (left >= 0) {
+                while (left > 0) {
+                    temp[flag++] = A[left] * A[left];
+                    left--;
                 }
                 temp[flag++] = A[left] * A[left];
             }
 
-            if (right <= A.length - 1){
-                while (right < A.length - 1){
-                    temp[flag ++] = A[right] * A[right];
-                    right ++;
+            if (right <= A.length - 1) {
+                while (right < A.length - 1) {
+                    temp[flag++] = A[right] * A[right];
+                    right++;
                 }
                 temp[flag++] = A[right] * A[right];
             }
@@ -84,14 +84,14 @@ public class array_977_squares_of_a_sorted_array {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(sortedSquares(new int[]{-5,-4,-3,-2,-1})));
-        System.out.println(Arrays.toString(sortedSquares(new int[]{-5,-4,-3,-2,-1,0})));
-        System.out.println(Arrays.toString(sortedSquares(new int[]{-4,-1,0,3,10})));
-        System.out.println(Arrays.toString(sortedSquares(new int[]{-7,-3,2,3,11})));
-        System.out.println(Arrays.toString(sortedSquares(new int[]{-3,-2,-1,0,1,2})));
-        System.out.println(Arrays.toString(sortedSquares(new int[]{-1,0,1,2,3,4})));
-        System.out.println(Arrays.toString(sortedSquares(new int[]{1,2,3,4,5,6})));
-        System.out.println(Arrays.toString(sortedSquares(new int[]{0,1,2,3,4,5})));
+        System.out.println(Arrays.toString(sortedSquares(new int[]{-5, -4, -3, -2, -1})));
+        System.out.println(Arrays.toString(sortedSquares(new int[]{-5, -4, -3, -2, -1, 0})));
+        System.out.println(Arrays.toString(sortedSquares(new int[]{-4, -1, 0, 3, 10})));
+        System.out.println(Arrays.toString(sortedSquares(new int[]{-7, -3, 2, 3, 11})));
+        System.out.println(Arrays.toString(sortedSquares(new int[]{-3, -2, -1, 0, 1, 2})));
+        System.out.println(Arrays.toString(sortedSquares(new int[]{-1, 0, 1, 2, 3, 4})));
+        System.out.println(Arrays.toString(sortedSquares(new int[]{1, 2, 3, 4, 5, 6})));
+        System.out.println(Arrays.toString(sortedSquares(new int[]{0, 1, 2, 3, 4, 5})));
     }
 
     /**

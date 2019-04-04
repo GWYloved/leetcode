@@ -1,4 +1,5 @@
 package array;
+
 /*
 Given an array A of integers, return true if and only if it is a valid mountain array.
 
@@ -29,26 +30,26 @@ Note:
  */
 public class array_941_Valid_Mountain_Array {
     public static boolean validMountainArray(int[] A) {
-        if (A.length < 3){
+        if (A.length < 3) {
             return false;
         }
         int flag = 0;
         int last = A[0];
-        for (int i = 1; i < A.length; i ++){
-            if (flag == 0){
-                if (last >= A[i]){
+        for (int i = 1; i < A.length; i++) {
+            if (flag == 0) {
+                if (last >= A[i]) {
                     return false;
-                }else {
+                } else {
                     flag = 1;
                 }
-            }else if (flag == 1){
-                if (last > A[i]){
+            } else if (flag == 1) {
+                if (last > A[i]) {
                     flag = -1;
-                }else if (last == A[i]){
+                } else if (last == A[i]) {
                     return false;
                 }
-            }else{
-                if (last <= A[i]){
+            } else {
+                if (last <= A[i]) {
                     return false;
                 }
             }
@@ -59,13 +60,13 @@ public class array_941_Valid_Mountain_Array {
 
     public static void main(String[] args) {
 
-        System.out.println(validMountainArray(new int[]{2,1}));
-        System.out.println(validMountainArray(new int[]{3,5,5}));
-        System.out.println(validMountainArray(new int[]{0,3,2,1}));
-        System.out.println(validMountainArray(new int[]{0,3,2,2,1}));
-        System.out.println(validMountainArray(new int[]{0,0,3,2,1}));
-        System.out.println(validMountainArray(new int[]{1,2,3,4,5,4,3,2,1}));
-        System.out.println(validMountainArray(new int[]{1,2,3,4,5}));
+        System.out.println(validMountainArray(new int[]{2, 1}));
+        System.out.println(validMountainArray(new int[]{3, 5, 5}));
+        System.out.println(validMountainArray(new int[]{0, 3, 2, 1}));
+        System.out.println(validMountainArray(new int[]{0, 3, 2, 2, 1}));
+        System.out.println(validMountainArray(new int[]{0, 0, 3, 2, 1}));
+        System.out.println(validMountainArray(new int[]{1, 2, 3, 4, 5, 4, 3, 2, 1}));
+        System.out.println(validMountainArray(new int[]{1, 2, 3, 4, 5}));
     }
 
     /**

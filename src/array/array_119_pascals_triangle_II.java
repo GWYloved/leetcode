@@ -24,14 +24,14 @@ Could you optimize your algorithm to use only O(k) extra space?
 class array_119_pascals_triangle_II {
     public static List<Integer> getRow(int rowIndex) {
         List<Integer> result = new ArrayList<>();
-        if (rowIndex == 0){
+        if (rowIndex == 0) {
             result.add(1);
             return result;
         }
-        for (int i = 0; i <= rowIndex; i ++){
-            if (i == 0 || i == rowIndex){
+        for (int i = 0; i <= rowIndex; i++) {
+            if (i == 0 || i == rowIndex) {
                 result.add(1);
-            }else {
+            } else {
 //                result.add((int)((factorial(rowIndex)).divide((factorial(rowIndex - i))*factorial(i))));
                 result.add((factorial(rowIndex).divide((factorial(rowIndex - i).multiply(factorial(i))))).intValue());
             }
@@ -41,7 +41,7 @@ class array_119_pascals_triangle_II {
 
     private static java.math.BigDecimal factorial(int n) {
         java.math.BigDecimal sum = new java.math.BigDecimal(1);
-        while( n > 0 ) {
+        while (n > 0) {
             sum = sum.multiply(new java.math.BigDecimal(n--));
         }
         return sum;

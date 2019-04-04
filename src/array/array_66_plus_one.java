@@ -1,4 +1,5 @@
 package array;
+
 /*
 Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
 
@@ -22,20 +23,20 @@ class array_66_plus_one {
         int length = digits.length;
         boolean update = true;
         int index = length - 1;
-        while (update){
-            if (index >= 0){
+        while (update) {
+            if (index >= 0) {
                 int t = digits[index] + 1;
-                if (t == 10){
+                if (t == 10) {
                     digits[index] = 0;
-                }else {
+                } else {
                     update = false;
                     digits[index] = t;
                 }
-                index --;
-            }else {
-                int[] temp = new int[length+1];
+                index--;
+            } else {
+                int[] temp = new int[length + 1];
                 temp[0] = 1;
-                for (int i = 1; i < temp.length; i ++){
+                for (int i = 1; i < temp.length; i++) {
                     temp[i] = 0;
                 }
                 return temp;

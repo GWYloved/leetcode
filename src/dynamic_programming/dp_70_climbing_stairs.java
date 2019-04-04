@@ -1,4 +1,5 @@
 package dynamic_programming;
+
 /*
 You are climbing a stair case. It takes n steps to reach to the top.
 
@@ -24,12 +25,13 @@ Explanation: There are three ways to climb to the top.
  */
 class dp_70_climbing_stairs {
     public int climbStairs(int n) {
-        if (n == 0 ){
+        if (n == 0) {
             return 0;
         }
         return fel(n);
     }
-    private static int fel(int n){
+
+    private static int fel(int n) {
         int f1 = 1;
         int f2 = 1;
         int prePreFib = f1;
@@ -37,11 +39,11 @@ class dp_70_climbing_stairs {
         int fib = 0;
         int flag = 1;
 
-        if (n == 0 || n == 1){
+        if (n == 0 || n == 1) {
             return f1;
         }
-        if (n >= 2){
-            while (flag < n){
+        if (n >= 2) {
+            while (flag < n) {
                 fib = preFib + prePreFib;
                 prePreFib = preFib;
                 preFib = fib;

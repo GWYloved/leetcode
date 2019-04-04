@@ -3,7 +3,7 @@ package utils;
 import java.util.List;
 
 public class ListUtils {
-    public static boolean isListEqual(List l0, List l1){
+    public static boolean isListEqual(List l0, List l1) {
         if (l0 == l1)
             return true;
         if (l0 == null && l1 == null)

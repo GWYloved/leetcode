@@ -27,7 +27,7 @@ class array_561_array_partition_I {
     }
 
     public static void main(String[] args) {
-        System.out.println(arrayPairSum2(new int[]{1,4,3,2}));
+        System.out.println(arrayPairSum2(new int[]{1, 4, 3, 2}));
     }
 
 
@@ -42,7 +42,7 @@ class array_561_array_partition_I {
      */
     public static int arrayPairSum2(int[] nums) {
         int N = 10000, min = Integer.MAX_VALUE;
-        boolean[] exist = new boolean[2*N+1];
+        boolean[] exist = new boolean[2 * N + 1];
 
         for (int i = 0; i < nums.length; i++) {
             exist[nums[i] + N] = true;

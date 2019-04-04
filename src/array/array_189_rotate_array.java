@@ -28,20 +28,20 @@ import java.util.Arrays;
 
 class array_189_rotate_array {
     public static void rotate(int[] nums, int k) {
-        if (nums.length < 1|| k <= 0){
+        if (nums.length < 1 || k <= 0) {
             return;
         }
         k = k % nums.length;
-        while (k > 0){
+        while (k > 0) {
             reorder(nums);
-            k -- ;
+            k--;
         }
     }
 
-    public static void reorder(int[] nums){
-        int temp = nums[nums.length-1];
-        for (int i = nums.length -2; i >= 0; i --){
-            nums[i +1] = nums[i];
+    public static void reorder(int[] nums) {
+        int temp = nums[nums.length - 1];
+        for (int i = nums.length - 2; i >= 0; i--) {
+            nums[i + 1] = nums[i];
             nums[i] = temp;
             temp = nums[i];
         }
@@ -51,17 +51,17 @@ class array_189_rotate_array {
         System.out.println(System.currentTimeMillis());
     }
 
-    public static void rotate1(int[] nums, int k){
-        if (nums.length < 1|| k <= 0){
+    public static void rotate1(int[] nums, int k) {
+        if (nums.length < 1 || k <= 0) {
             return;
         }
         k = k % nums.length;
         int[] temp = Arrays.copyOf(nums, nums.length);
-        for (int i = 0; i < k; i ++){
+        for (int i = 0; i < k; i++) {
             nums[i] = temp[nums.length - k + i];
         }
 //        System.out.println(Arrays.toString(nums));
-        for (int i = k; i < nums.length; i ++){
+        for (int i = k; i < nums.length; i++) {
             nums[i] = temp[i - k];
         }
 //        System.out.println(Arrays.toString(nums));

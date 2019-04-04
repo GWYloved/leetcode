@@ -35,18 +35,18 @@ public class array_1002_find_common_characters {
         List<String> ans = new ArrayList<>();
         int[] count = new int[26];
         Arrays.fill(count, Integer.MAX_VALUE);
-        for (String str : A){
+        for (String str : A) {
             int[] cnt = new int[26];
-            for (char c : str.toCharArray()){
+            for (char c : str.toCharArray()) {
                 ++cnt[c - 'a'];
             }
-            for (int i = 0 ; i < 26; i ++){
-                count[i] = Math.min(cnt[i],count[i]);
+            for (int i = 0; i < 26; i++) {
+                count[i] = Math.min(cnt[i], count[i]);
             }
         }
-        for (int i = 0; i < 26; i ++){
-            while (count[i] -- > 0){
-                ans.add(String.valueOf((char)(i+'a')));
+        for (int i = 0; i < 26; i++) {
+            while (count[i]-- > 0) {
+                ans.add(String.valueOf((char) (i + 'a')));
             }
         }
         return ans;

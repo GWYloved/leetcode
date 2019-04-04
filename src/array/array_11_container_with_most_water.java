@@ -17,10 +17,10 @@ Note: You may not slant the container and n is at least 2.
 public class array_11_container_with_most_water {
     private static int maxArea(int[] height) {
         int size = 0;
-        for (int i = 0; i < height.length;i ++){
-            for (int j = 0; j < height.length; j ++){
-                int tempSize = Math.abs(j-i)*Math.min(height[j],height[i]);
-                if (size < tempSize){
+        for (int i = 0; i < height.length; i++) {
+            for (int j = 0; j < height.length; j++) {
+                int tempSize = Math.abs(j - i) * Math.min(height[j], height[i]);
+                if (size < tempSize) {
                     size = tempSize;
                 }
             }
@@ -30,7 +30,7 @@ public class array_11_container_with_most_water {
 
     //test
     public static void main(String[] args) {
-        int[] heigh = new int[]{1,8,6,2,5,4,8,3,7};
+        int[] heigh = new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7};
         System.out.println(maxArea(heigh));
     }
 
@@ -47,27 +47,27 @@ public class array_11_container_with_most_water {
         int l = 0, r = height.length - 1;
         int max = 0;
 
-        while(l < r) {
+        while (l < r) {
 
             int hl = height[l];
             int hr = height[r];
             int ht = 0;
 
-            if(hl < hr) {
+            if (hl < hr) {
                 //当左边比右边短时，利用左边和横轴计算出第一个面积
                 ht = hl * (r - l);
 
                 // anything smaller than or equal to hl will hold less water
                 //通过一个while来进行指针的迁移，迁移至左边高度增加时截止
                 //思想：如果左边一直不大于初始的左边或者小于初始的左边时，由于横轴一直在减少，所以不可能面积大于初始的面积，唯有高度增加时才有可能
-                while((l < r) && hl >= height[++l]);
+                while ((l < r) && hl >= height[++l]) ;
                 //此时指针已经挪到了高点，需要再次判断左右的高度，跳到之前的while中
 
             } else {
                 ht = hr * (r - l);
 
                 // anything smaller than or equal to hr will hold less water
-                while((l < r) && hr >= height[--r]);
+                while ((l < r) && hr >= height[--r]) ;
             }
             //每次面积计算之后保存最大值
             max = Math.max(max, ht);
