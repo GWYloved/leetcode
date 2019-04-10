@@ -12,7 +12,7 @@ Example 2:
 Input: "A man, a plan, a canal: Panama"
 Output: "amanaP :lanac a ,nalp a ,nam A"
  */
-class String_344_reverse_string {
+class string_344_reverse_string {
     public String reverseString(String s) {
         if (s == null || s.length() < 1) {
             return s;

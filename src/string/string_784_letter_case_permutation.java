@@ -21,7 +21,7 @@ Note:
 S will be a string with length between 1 and 12.
 S will consist only of letters or digits.
  */
-class String_784_letter_case_permutation {
+class string_784_letter_case_permutation {
     public static List<String> letterCasePermutation(String S) {
         List<String> result = new ArrayList<>();
         result.add(S);

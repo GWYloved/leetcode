@@ -17,7 +17,7 @@ Input string may contain leading or trailing spaces. However, your reversed stri
 You need to reduce multiple spaces between two words to a single space in the reversed string.
 Follow up: For C programmers, try to solve it in-place in O(1) space.
  */
-class String_151_reverse_word_in_a_string {
+class string_151_reverse_word_in_a_string {
     public static String reverseWords(String s) {
         if (s == null || s.length() < 1) {
             return s;
