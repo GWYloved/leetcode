@@ -20,23 +20,23 @@ For the purpose of this problem, we will return 0 when needle is an empty string
  */
 public class string_28_implement_strStr {
     public static int strStr(String haystack, String needle) {
-        char[] content = haystack.toCharArray();
-        char[] search = needle.toCharArray();
         if (haystack.length() < 1 && needle.length() > 0 ||needle.length() > haystack.length()){
             return -1;
         }
-        if (haystack.length() > 0 && needle.length() < 1){
+        if (haystack.length() > 0 && needle.length() < 1 || haystack.length() == 0 && needle.length() == 0){
             return 0;
         }
-        boolean isIn = false;
-        int firstFlag = 0;
-        int searchFlag = 0;
-        for (int i = 0; i < content.length; i ++){
-            if (content[i] == search[0]){
-                
+        for (int i = 0; i < haystack.length(); i ++){
+            if (haystack.charAt(i) == needle.charAt(0) && haystack.length() - i >= needle.length()){
+                if (haystack.substring(i, i+needle.length()).equals(needle)){
+                    return i;
+                }
+            }
+            if (haystack.length() - i < needle.length()){
+                return -1;
             }
         }
-        return searchFlag == search.length  ? firstFlag: -1;
+        return -1;
     }
     private static boolean isEqual(char[] a, char[]b){
         for (int i = 0; i < a.length; i ++){
@@ -61,5 +61,11 @@ public class string_28_implement_strStr {
         System.out.println(strStr("",""));
         System.out.println(strStr("mississippi",
                 "issip"));
+        String s = "abcd";
+        System.out.println(s.substring(1,2));
     }
+
+    /**
+     * 思路：这题单纯比较字符串即可
+     */
 }
