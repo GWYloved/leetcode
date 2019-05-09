@@ -13,7 +13,7 @@ Example 2:
 Input: a = "1010", b = "1011"
 Output: "10101"
  */
-public class array_67_add_binary {
+public class string_67_add_binary {
     public static String addBinary(String a, String b) {
         StringBuilder s = new StringBuilder();
         int maxLength = Math.max(a.length(), b.length());
