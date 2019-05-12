@@ -1,4 +1,7 @@
 package string;
+
+import java.util.Arrays;
+
 /*
 Given an array of characters, compress it in-place.
 
@@ -57,39 +60,43 @@ All characters have an ASCII value in [35, 126].
  */
 public class string_443_string_compression {
     public static int compress(char[] chars) {
-        int count = 0;
         char last = ' ';
-        int lastCountUnit = 0;
-        int lastCountDecade = 0;
-        int lastCountHundreds = 0;
-        int lastCountThrounds = 0;
-        for (int i = 0; i <chars.length; i ++){
-            if (last == chars[i]){
-                lastCountUnit++;
-                if (lastCountUnit >= 10){
-                    lastCountUnit = lastCountUnit % 10;
-                    lastCountDecade++;
-                    if (lastCountDecade >= 10){
-                        lastCountHundreds++;
-                        lastCountDecade = lastCountDecade % 10;
-                        if (lastCountHundreds >= 10){
-                            lastCountThrounds ++;
-                            lastCountHundreds = lastCountHundreds % 10;
-                        }
+        int lastCount = 0;
+        char[] temp;
+        int count = 0;
+        for (int i = 0 ; i < chars.length; i ++){
+            if (last!= chars[i]){
+                if (lastCount > 1){
+                    temp = String.valueOf(lastCount).toCharArray();
+                    chars[count] = last;
+                    count ++;
+                    for (int j = 0; j < temp.length; j ++){
+                        chars[++count -1] = temp[j];
                     }
-                }else {
-
+                }else if (lastCount == 1){
+                    chars[count] = last;
+                    count ++;
                 }
-
-            }else {
                 last = chars[i];
-                lastCountUnit = 1;
-                lastCountDecade = 0;
-                lastCountHundreds = 0;
-                lastCountThrounds = 0;
-                count ++;
+                lastCount = 1;
+            }else {
+                lastCount++;
             }
         }
+//        System.out.println(count);
+//        System.out.println(Arrays.toString(chars));
+        if (lastCount > 1){
+            temp = String.valueOf(lastCount).toCharArray();
+            chars[count] = last;
+            count ++;
+            for (int j = 0; j < temp.length; j ++){
+                chars[ ++count -1] = temp[j];
+            }
+        }else if (lastCount == 1){
+            chars[count] = last;
+            count ++;
+        }
+//        System.out.println(Arrays.toString(chars));
         return count;
     }
 
@@ -98,4 +105,8 @@ public class string_443_string_compression {
         System.out.println(compress(new char[]{'a'}));
         System.out.println(compress(new char[]{'a','b','b','b','b','b','b','b','b','b','b','b','b'}));
     }
+
+    /**
+     * 这题总体上来讲思路还是挺巧妙的
+     */
 }
