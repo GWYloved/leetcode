@@ -31,9 +31,33 @@ class merge_sort {
         }
     }
 
-    public static void main(String[] args) {
-        int[] a = new int[]{3, 4, 9, 1, 2, 6, 5, 2, 1};
-        mergeSort(a, 0, a.length - 1);
-        System.out.println(Arrays.toString(a));
+//    public static void main(String[] args) {
+//        int[] a = new int[]{3, 4, 9, 1, 2, 6, 5, 2, 1};
+//        mergeSort(a, 0, a.length - 1);
+//        System.out.println(Arrays.toString(a));
+//    }
+public static void main(String[] args) {
+    int[] co = new int[]{0xDE8A7F, 0x79B488, 0x7CAAB4, 0x7A8AC7, 0xCEA780};
+    for (int i = 0; i < 5; i ++){
+        int temp = co[3];
+        co[3] = co[4];
+        co[4] = co[0];
+        co[0] = temp;
+        if (Math.random() - 0.5 > 0){
+            temp = co[0];
+            co[0] = co[1];
+            co[1] = temp;
+        }
+        if (Math.random() - 0.5 > 0){
+            temp = co[1];
+            co[1] = co[2];
+            co[2] = temp;
+        }
+        if (Math.random() - 0.5 > 0){
+            temp = co[0];
+            co[0] = co[2];
+            co[2] = temp;
+        }
     }
+}
 }
