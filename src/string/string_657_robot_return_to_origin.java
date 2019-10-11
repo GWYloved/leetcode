@@ -21,6 +21,6 @@ Explanation: The robot moves left twice. It ends up two "moves" to the left of t
  */
 public class string_657_robot_return_to_origin {
     public boolean judgeCircle(String moves) {
-
+        return false;
     }
 }
