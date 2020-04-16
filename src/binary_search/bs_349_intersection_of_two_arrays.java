@@ -23,9 +23,10 @@ import java.util.List;
  * The result can be in any order.
  */
 public class bs_349_intersection_of_two_arrays {
-    public int[] intersection(int[] nums1, int[] nums2) {
-        int[] big = nums1.length > nums2.length? nums1 : nums2;
-        int[] small = nums1.length < nums2.length ? nums2 : nums1;
-        int[] output = new int[small.length];
-    }
+//    public int[] intersection(int[] nums1, int[] nums2) {
+//        int[] big = nums1.length > nums2.length? nums1 : nums2;
+//        int[] small = nums1.length < nums2.length ? nums2 : nums1;
+//        int[] output = new int[small.length];
+//        return new int[];
+//    }
 }
