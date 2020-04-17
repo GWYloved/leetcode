@@ -22,33 +22,27 @@ public class math_69_sqrtX {
         if (x == 0){
             return 0;
         }
-        if (x <= 2){
-            return 1;
-        }
-        int start = 0;
-        int end = x;
-        int maxDiff = Integer.MAX_VALUE;
-        int temp = x;
-        while (start < end){
-            int mid = (end + start)>>>1;
-            int t = x - mid * mid;
-            if (t < 0){
-                end = mid - 1;
+        int left = 1, right = x;
+        while (true){
+            int mid = (left + right)>>>1;
+            if (mid> x/mid){
+                right = mid -1;
             }else {
-                if (t < maxDiff){
-                    maxDiff = t;
-                    temp = mid;
-                    start = mid + 1;
-                }else {
-                    end = mid - 1;
+                if (mid + 1 > x/(mid + 1)){
+                    return mid;
                 }
+                left = mid + 1;
             }
         }
-        return temp;
     }
 
     public static void main(String[] args) {
-        System.out.println(mySqrt(8));
-        System.out.println(mySqrt(4));
+        System.out.println(mySqrt(2147395599));
     }
+    /**
+     * 思路：这题思路其实需要理解一下，
+     * 如果找到一个数，它的平方比目标数小，它+1的和的平方比目标数大，那么这个数就是目标数
+     * 另外有个不注意会漏掉的地方，就是如果用X和mid*mid比，会溢出，使用x/mid和mid比才可以
+     * ps：二分法的中间值应该使用(left+right)>>>1
+     */
 }
