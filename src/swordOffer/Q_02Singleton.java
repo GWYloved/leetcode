@@ -1,5 +1,8 @@
 package swordOffer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Q_02Singleton {
     //单例默认有饿汉单例，就是创建的时候直接static在成员变量创建，饿汉单例可以直接避免多线程问题
     //单例默认也有懒汉单例，即需要的时候在创建，懒汉单例线程优化最佳是Double-check
@@ -18,4 +21,9 @@ public class Q_02Singleton {
      * 由于懒汉单例的doublecheck 不可避免的使用到了volitile，而volitile会影响性能
      * 因此静态内部类是最好的一种实现方式。
      */
+
+    public static void main(String[] args) {
+        List list = null;
+        System.out.println(list instanceof ArrayList);
+    }
 }
