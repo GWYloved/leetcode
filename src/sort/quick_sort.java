@@ -45,6 +45,7 @@ public class quick_sort {
         if (startIndex > endIndex) {
             return;
         }
+
         int partitionIndex = getPartitionIndexByFillEmpty(a, startIndex, endIndex);
         quickSortByFillEmpty(a, startIndex, partitionIndex - 1);
         quickSortByFillEmpty(a, partitionIndex + 1, endIndex);
